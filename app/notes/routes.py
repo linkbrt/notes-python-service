@@ -1,5 +1,8 @@
 from aiohttp import web
 
+from app.notes import views
 
-def setup_routes():
-    return []
+def get_routes():
+    return [
+        web.get('/', views.get_notes),
+    ]
