@@ -1,7 +1,7 @@
 from aiohttp import web
 
-from app import db
-from app.users import utils as user_utils
+from .. import db
+from . import utils as user_utils
 
 
 async def registration(request: web.Request) -> web.Response:

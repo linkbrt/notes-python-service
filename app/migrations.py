@@ -1,7 +1,7 @@
-from app.db import get_connection
+from .db import get_connection
 
 
-def migrate():
+def migrate() -> None:
     conn = get_connection()
     cur = conn.cursor()
     cur.execute("""CREATE TABLE IF NOT EXISTS users (

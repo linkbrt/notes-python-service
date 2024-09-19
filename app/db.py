@@ -1,10 +1,10 @@
 import psycopg2
 
-from app.users.models import User
-from app.notes.models import Note
+from .users.models import User
+from .notes.models import Note
 
-from app.utils import create_tokens
-from app.settings import POSTGRES_CONFIG
+from .utils import create_tokens
+from .settings import POSTGRES_CONFIG
 
 
 def get_connection():

@@ -1,9 +1,9 @@
 from aiohttp import web
 
-from app.notes import views
+from . import views
 
 
-def get_routes():
+def get_routes() -> list[web.RouteDef]:
     return [
         web.get('/', views.get_notes),
         web.post('/create-note', views.create_note),

@@ -1,7 +1,7 @@
 from aiohttp import web
 
-from app.users import utils as users_utils
-from app.notes import utils as notes_utils
+from ..users import utils as users_utils
+from . import utils as notes_utils
 
 from app import db
 

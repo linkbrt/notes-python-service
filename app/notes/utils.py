@@ -1,9 +1,8 @@
 import aiohttp
 
-from app import db
-from app import settings
+from .. import db, settings
 
-from app.notes.models import Note, YandexWordError
+from .models import Note, YandexWordError
 
 
 async def save_note(text: str, user_id: int) -> bool:

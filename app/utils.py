@@ -4,16 +4,16 @@ from typing import Union
 import jwt
 from cryptography.fernet import Fernet
 
-from app import settings
+from .settings import JWT_SECRET_KEY
 
 
-def create_tokens(username) -> Union[str, str]:
+def create_tokens(username: str) -> Union[str, str]:
     access_token = create_access_token(username)
     refresh_token = str(Fernet.generate_key())[2:-1]
     return access_token, refresh_token
 
 
-def create_access_token(username):
+def create_access_token(username: str) -> str:
     current_datetime = datetime.now()
 
     payload = {
@@ -24,7 +24,7 @@ def create_access_token(username):
 
     access_token = jwt.encode(
         payload=payload,
-        key=settings.JWT_SECRET_KEY,
+        key=JWT_SECRET_KEY,
         algorithm="HS256",
     )
 
@@ -34,7 +34,7 @@ def create_access_token(username):
 def decode_token(token: str, verify_signature: bool = True) -> str:
     try:
         return jwt.decode(token,
-                          key=settings.JWT_SECRET_KEY,
+                          key=JWT_SECRET_KEY,
                           algorithms="HS256",
                           options={
                               "verify_signature": verify_signature

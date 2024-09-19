@@ -1,9 +1,9 @@
 from aiohttp import web
 
-from app.users import views
+from . import views
 
 
-def get_routes():
+def get_routes() -> list[web.RouteDef]:
     return [
         web.post('/register', views.registration),
         web.post('/refresh-token', views.refresh_access_token),
