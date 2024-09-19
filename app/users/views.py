@@ -1,34 +1,35 @@
 from aiohttp import web
-import psycopg2
 
-from .. import db
+from app import db
+from app.users import utils as user_utils
 
 
 async def registration(request: web.Request) -> web.Response:
-    # return web.json_response(db.get_users())
     data = await request.post()
     username, password = data.get('username'), data.get('password')
-    
+
     if not username or not password:
         raise web.HTTPBadRequest()
-    
+
     if db.find_user(username):
         raise web.HTTPBadRequest()
-    
+
     access_token, refresh_token = db.register_user(username, password)
-    
-    return web.json_response({'access_token': access_token, 'refresh_token': refresh_token})
+
+    return web.json_response({
+        'access_token': access_token,
+        'refresh_token': refresh_token
+    })
 
 
-# def authenticate(header_value):
-#     return header_value in USERS
+async def refresh_access_token(request: web.Request) -> web.Response:
+    token = request.headers.get('Authorization')
+    if token is None:
+        raise web.HTTPUnauthorized
 
-# def authorized(user, password):
-#     user = USERS.get(user)
-#     if not user:
-#         return False
+    data = await request.post()
 
-#     return user == password
+    access_token = user_utils.refresh_tokens(token.split()[-1],
+                                             data.get('refresh_token'))
 
-
-# print(authorized('fdag', None))
+    return web.json_response({'access_token': access_token})

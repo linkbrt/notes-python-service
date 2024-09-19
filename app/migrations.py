@@ -1,23 +1,26 @@
-import psycopg2
-
-from db import get_connection
+from app.db import get_connection
 
 
 def migrate():
     conn = get_connection()
     cur = conn.cursor()
-    # cur.execute("CREATE TABLE test(id serial PRIMARY KEY, num integer, data varchar);")
+    cur.execute("""CREATE TABLE IF NOT EXISTS users (
+        id serial PRIMARY KEY, 
+        username varchar(100), 
+        password varchar(255),
+        refresh_token varchar(255)
+    );""")
 
-    # cur.execute("INSERT INTO test (num, data) VALUES (%s, %s)",
-                # (100, "abcdef"))
-    cur.execute("SELECT * FROM test;")
-    print(cur.fetchall())
+    cur.execute("""CREATE TABLE IF NOT EXISTS notes (
+        id serial PRIMARY KEY,
+        text TEXT,
+        user_id int,
+        CONSTRAINT user_id
+            FOREIGN KEY (user_id)
+                REFERENCES users(id)
+    );""")
 
     conn.commit()
 
     cur.close()
     conn.close()
-
-
-if __name__ == "__main__":
-    migrate()
