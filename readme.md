@@ -10,4 +10,4 @@ API Сервер заметок.
 
 
 Коллекция Postman для тестов.
-[[https://api.postman.com/collections/13431995-07de28e1-a431-4b75-aea1-eca27625cb37?access_key=PMAT-01J85YKMH3SE3WVV9503CG6MDS](https://web.postman.co/workspace/linkbrt_workspace~7b9197ec-425f-4308-a758-dec1190765f5/folder/13431995-1d1165fe-2ff0-4a98-b1c4-c2df739cbf40)](https://web.postman.co/workspace/linkbrt_workspace~7b9197ec-425f-4308-a758-dec1190765f5/folder/13431995-1d1165fe-2ff0-4a98-b1c4-c2df739cbf40)
+https://web.postman.co/workspace/linkbrt_workspace~7b9197ec-425f-4308-a758-dec1190765f5/folder/13431995-1d1165fe-2ff0-4a98-b1c4-c2df739cbf40
