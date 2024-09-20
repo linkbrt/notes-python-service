@@ -11,3 +11,11 @@ API Сервер заметок.
 
 Коллекция Postman для тестов.
 https://web.postman.co/workspace/linkbrt_workspace~7b9197ec-425f-4308-a758-dec1190765f5/folder/13431995-1d1165fe-2ff0-4a98-b1c4-c2df739cbf40
+
+Инструкция по развертыванию:
+Клонирование проекта:
+- git clone git@github.com:linkbrt/notes-python-service.git
+Создание файла с переменными окружения .env:
+- За основу брать .env.template из репозитория
+Построение и запуск докер контейнеров
+- sudo docker compose build && sudo docker compose up -d
