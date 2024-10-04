@@ -1,4 +1,4 @@
-# API Сервер заметок.#
+# API Сервер заметок. #
 Стек: aiohttp + postgresql + docker.
 
 Эндпоинты:
